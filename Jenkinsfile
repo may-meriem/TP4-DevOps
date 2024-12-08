@@ -3,10 +3,6 @@ pipeline {
         any
     }
     
-    tools {
-        nodejs '10.19.0' // Assurez-vous que la version Node.js correspond au nom configuré dans Jenkins
-    }
-
     environment {
         // Ajout d'exemples pour vos variables d'environnement Azure, si nécessaire
         ARM_SUBSCRIPTION_ID = credentials('azure-subscription-id')
