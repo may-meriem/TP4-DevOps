@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 app.get('/', function (req, res) {
-    res.send('{ "response": "Hey There! This is nodejs app, version 2.0" }');
+    res.send('{ "response": "	New pipeline triggered" }');
 });
 
 app.get('/will', function (req, res) {
