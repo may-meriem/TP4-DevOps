@@ -1,5 +1,8 @@
 pipeline {
-    agent any
+    agent {
+        any
+    }
+
     environment {
         ARM_SUBSCRIPTION_ID = credentials('azure-subscription-id')
     }
@@ -9,6 +12,13 @@ pipeline {
             steps {
                 echo "Checking out the repository"
                 git branch: 'main', credentialsId: 'github-credentials', url: 'https://github.com/may-meriem/TP4-DevOps.git'
+            }
+        }
+
+        stage('Set Script Permissions') {
+            steps {
+                echo "Setting executable permissions for notify.sh"
+                sh 'chmod +x ./notify.sh'
             }
         }
 
@@ -28,6 +38,9 @@ pipeline {
 
         stage('Terraform Apply') {
             steps {
+                input {
+                    message "Do you want to proceed with Terraform apply?"
+                }
                 echo "Applying Terraform changes..."
                 sh 'terraform apply -auto-approve'
             }
