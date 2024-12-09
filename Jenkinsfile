@@ -4,9 +4,7 @@ pipeline {
     }
     
     environment {
-        // Ajout d'exemples pour vos variables d'environnement Azure, si nécessaire
         ARM_SUBSCRIPTION_ID = credentials('azure-subscription-id')
-        
     }
 
     stages {
@@ -34,7 +32,7 @@ pipeline {
         stage('Terraform Apply') {
             steps {
                 input {
-                    message "Do you want to proceed with apply?"
+                    message "Do you want to proceed with Terraform apply?"
                 }
                 echo "Applying Terraform changes..."
                 sh 'terraform apply -auto-approve'
