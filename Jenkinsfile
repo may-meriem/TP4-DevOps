@@ -37,9 +37,6 @@ pipeline {
 
         stage('Terraform Apply') {
             steps {
-                input {
-                    message "Do you want to proceed with Terraform apply?"
-                }
                 echo "Applying Terraform changes..."
                 sh 'terraform apply -auto-approve'
             }
